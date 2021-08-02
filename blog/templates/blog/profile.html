@@ -1,0 +1,51 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-sm-3">
+   <div class="mt-md-5 fs-2 username ">
+   {{name|upper}}
+   </div>
+   <div class="mt-md-3">
+      <a href="{% url 'addpost' %}" class="fs-4">ADD POST</a>
+   </div>
+
+   <div class="mt-md-3">
+      <a href="{% url 'dashboard' request.user.id %}" class="fs-4">PROFILE</a>
+   </div>
+</div>
+
+<div class="col-sm-7 offset-md-2">
+    <h2 class="myfont text-center mt-2">All Post</h2>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+    {{message}}
+   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+    {% endfor %}
+    {% endif %}
+{% if datas %}
+{% for data in datas %}
+<ul class = "collapsible popout mt-2" data-collapsible = "accordion">
+         <li >
+            <div class = "collapsible-header bg-dark myfont">
+               <i class="large material-icons">article</i>{{data.title}}</div>
+            <div class = "collapsible-body"><p>{{data.disc}}.</p></div>
+                <div class="text-end">
+                 <a href="{% url 'updatepost' data.id %}" class=" btn text-warning my-md-2 mx-md-2"><i class="material-icons left">edit</i>edit</a> 
+
+                  <form class="d-inline" action="{% url 'deletepost' data.id %}" method="POST" novalidate>
+                 {% csrf_token %}
+                  <input type="submit" value="Delete" class=" btn text-danger my-md-2 mx-md-2">
+            
+                  </form>
+
+                </div>
+         </li>
+    </ul>	
+{% endfor %}
+{% endif %}
+</div>
+{% endblock content %}

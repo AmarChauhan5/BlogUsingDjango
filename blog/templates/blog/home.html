@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="w-75 mx-auto">
+<h2 class="mx-auto ">Articals</h2>
+{% if datas %}
+    {% for data in datas %}
+  <div class="ml-5">
+      <div class="bg-dark rounded myshadow mb-3 ml-5" >
+          <div  class="shadow-lg p-3 my-2 bg-dark rounded text-center myfont" data-bs-toggle="collapse" href="#collapseExample{{data.id}}" role="button" aria-expanded="false" aria-controls="collapseExample{{data.id}}">
+            {{data.title}}
+          </div>
+
+        <div class="collapse" id="collapseExample{{data.id}}"> 
+            <div class="card card-body bg-dark"> {{data.disc}}</div>
+        </div>
+    </div>
+  </div>
+    {% endfor %}
+{% endif %}
+
+</div>
+{% endblock content %}

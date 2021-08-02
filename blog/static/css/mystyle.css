@@ -1,0 +1,17 @@
+.myshadow{
+    box-shadow: 3px 2px 4px 1px whitesmoke; 
+}
+input{
+    color: white;
+  }
+.myfont{
+    font-family: 'Staatliches', cursive;
+}
+.logofont{
+    font-family: 'Monoton', cursive;
+}
+.username{
+    font-family: 'Satisfy', cursive;
+}
+
+

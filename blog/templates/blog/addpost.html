@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% block title %}Add Post{% endblock title %}
+{% block content %}     
+            <div class="col-md-7 mx-auto">
+             {% if messages %}
+    {% for message in messages %}
+                <div class="alert alert-success alert-dismissible d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+    {% endfor %}
+    {% endif %}
+            <h2 class ="my-2">Add Post</h2>    
+                <form action="" method="POST" novalidate>
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                {{error}}
+                            {% endfor %}
+                    {% endif %}
+                            {% for form in form %}
+                                <div class="input-field ">
+                                    {{form.label_tag}}{{form}}{{form.errors|striptags}}
+                                </div>
+                            {% endfor %}
+                            <input type="submit" value="Add Post" class="btn btn-success my-2">
+                 </form>
+            </div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+    <div><h2>Login Form</h2></div>
+    <div class="col-sm-8">
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        {{error}}
+                    {% endfor %}
+            {% endif %}
+                    {% for form in form %}
+                        <div class="input-field ">
+                            {{form.label_tag}}{{form}}{{form.errors|striptags}}
+                        </div>
+                    {% endfor %}
+                <input type="submit" value="Login" class="btn btn-primary my-2">
+        </form>
+    </div>
+{% endblock content %}

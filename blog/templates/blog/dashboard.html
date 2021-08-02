@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}DashBoard{% endblock title %}
+{% block content %}
+<div class="text-center mt-3">
+<img src="{% static 'images/pic.jpg' %}" class="img-thumbnail rounded" alt="pic">
+</div>
+<div class="col-md-5 mx-auto">
+
+
+<div class="text-center ">
+
+<h3 class="my-2">{{request.user.get_full_name}}</h3>
+
+<table class="table text-white">
+  <tbody>
+    <tr>
+      <th scope="row">Username</th>
+      <td>{{user.username}}</td> 
+    </tr>
+    <tr>
+      <th scope="row">First name</th>
+      <td>{{user.first_name}}</td> 
+    </tr>
+    <tr>
+      <th scope="row">Last name</th>
+      <td>{{user.last_name}}</td> 
+    </tr>
+    <tr>
+      <th scope="row">Email Address</th>
+      <td>{{user.email}}</td> 
+    </tr>
+  </tbody>
+</table>
+<div>
+<a href="{% url 'dashboardchange' request.user.id %}" class="btn btn-outline-warning"><i class="material-icons left">edit</i> profile Edit</a>
+<a href="{% url 'passwordchange' %}" class="btn btn-outline-warning">Password Change</a>
+</div>
+</div>
+
+
+
+
+</div>
+{% endblock content %}
