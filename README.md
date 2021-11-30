@@ -1,5 +1,14 @@
 # Shopping website using Django Framework
 <br />
+Backend Python
+<br />
+Database sqlLite
+<br />
+Bootstrap
+<br />
+Font awesome icons
+<br />
+Email service SMTP
 
 # Feature
 1.Sign up with email OTP(for OTP i use SMTP server).
